@@ -9,14 +9,14 @@ import Slider from "../components/Slider";
 
 const Home = () => {
   return (
-    <div>
+    <div style={{ backgroundColor: "#18191a" }}>
       <Announcement />
       <Navbar />
-      <Slider />
+      {/* <Slider /> */}
       <Categories />
-      <Products/>
-      <Newsletter/>
-      <Footer/>
+      <Products />
+      <Newsletter />
+      <Footer />
     </div>
   );
 };

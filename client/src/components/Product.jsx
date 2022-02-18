@@ -27,12 +27,13 @@ const Container = styled.div`
   min-width: 280px;
   height: 350px;
   display: flex;
+  background-color: #242526;
+
   align-items: center;
   justify-content: center;
-  background-color: #f5fbfd;
   position: relative;
 
-  &:hover ${Info}{
+  &:hover ${Info} {
     opacity: 1;
   }
 `;
@@ -41,7 +42,7 @@ const Circle = styled.div`
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background-color: white;
+  background-color: #18191a;
   position: absolute;
 `;
 

@@ -33,6 +33,8 @@ const Arrow = styled.div`
 `;
 
 const Wrapper = styled.div`
+  background-color: #242526;
+
   height: 100%;
   display: flex;
   transition: all 1.5s ease;

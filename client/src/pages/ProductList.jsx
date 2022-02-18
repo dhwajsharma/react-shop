@@ -6,7 +6,10 @@ import Newsletter from "../components/Newsletter";
 import Footer from "../components/Footer";
 import { mobile } from "../responsive";
 
-const Container = styled.div``;
+const Container = styled.div`
+  background-color: #18191a;
+  color: white;
+`;
 
 const Title = styled.h1`
   margin: 20px;
@@ -32,6 +35,8 @@ const FilterText = styled.span`
 const Select = styled.select`
   padding: 10px;
   margin-right: 20px;
+  color: white;
+  background-color: #242526;
   ${mobile({ margin: "10px 0px" })}
 `;
 const Option = styled.option``;

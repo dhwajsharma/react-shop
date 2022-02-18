@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { mobile } from "../responsive";
 
 const Container = styled.div`
+  color: white;
   height: 60px;
   ${mobile({ height: "50px" })}
 `;
@@ -30,20 +31,28 @@ const Language = styled.span`
 `;
 
 const SearchContainer = styled.div`
-  border: 0.5px solid lightgray;
+  border: none;
   display: flex;
   align-items: center;
+  background-color: #242526;
+  border-radius: 5px;
   margin-left: 25px;
   padding: 5px;
 `;
 
 const Input = styled.input`
   border: none;
+  background-color: #242526;
+  color: white;
+  padding: 5px;
+  outline: none;
   ${mobile({ width: "50px" })}
 `;
 
 const Center = styled.div`
   flex: 1;
+  cursor: pointer;
+
   text-align: center;
 `;
 
@@ -74,11 +83,13 @@ const Navbar = () => {
           <Language>EN</Language>
           <SearchContainer>
             <Input placeholder="Search" />
-            <Search style={{ color: "gray", fontSize: 16 }} />
+            <Search
+              style={{ color: "gray", fontSize: 16, cursor: "pointer" }}
+            />
           </SearchContainer>
         </Left>
         <Center>
-          <Logo>LAMA.</Logo>
+          <Logo>SHOP</Logo>
         </Center>
         <Right>
           <MenuItem>REGISTER</MenuItem>

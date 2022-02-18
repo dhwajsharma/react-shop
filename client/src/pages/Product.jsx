@@ -6,12 +6,15 @@ import Navbar from "../components/Navbar";
 import Newsletter from "../components/Newsletter";
 import { mobile } from "../responsive";
 
-const Container = styled.div``;
+const Container = styled.div`
+  background-color: #18191a;
+  color: white;
+`;
 
 const Wrapper = styled.div`
   padding: 50px;
   display: flex;
-  ${mobile({ padding: "10px", flexDirection:"column" })}
+  ${mobile({ padding: "10px", flexDirection: "column" })}
 `;
 
 const ImgContainer = styled.div`
@@ -66,6 +69,7 @@ const FilterColor = styled.div`
   width: 20px;
   height: 20px;
   border-radius: 50%;
+
   background-color: ${(props) => props.color};
   margin: 0px 5px;
   cursor: pointer;
@@ -74,9 +78,14 @@ const FilterColor = styled.div`
 const FilterSize = styled.select`
   margin-left: 10px;
   padding: 5px;
+  background-color: #242526;
+  color: white;
 `;
 
-const FilterSizeOption = styled.option``;
+const FilterSizeOption = styled.option`
+  background-color: #242526;
+  color: white;
+`;
 
 const AddContainer = styled.div`
   width: 50%;
@@ -105,14 +114,12 @@ const Amount = styled.span`
 
 const Button = styled.button`
   padding: 15px;
-  border: 2px solid teal;
-  background-color: white;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  background-color: #242526;
   cursor: pointer;
   font-weight: 500;
-
-  &:hover{
-      background-color: #f8f4f4;
-  }
 `;
 
 const Product = () => {
@@ -154,9 +161,9 @@ const Product = () => {
           </FilterContainer>
           <AddContainer>
             <AmountContainer>
-              <Remove />
+              <Remove style={{ cursor: "pointer" }} />
               <Amount>1</Amount>
-              <Add />
+              <Add style={{ cursor: "pointer" }} />
             </AmountContainer>
             <Button>ADD TO CART</Button>
           </AddContainer>

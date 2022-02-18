@@ -5,9 +5,13 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { mobile } from "../responsive";
 
-const Container = styled.div``;
+const Container = styled.div`
+  background-color: #18191a;
+  color: white;
+`;
 
 const Wrapper = styled.div`
+  background-color: #242526;
   padding: 20px;
   ${mobile({ padding: "10px" })}
 `;
@@ -28,9 +32,10 @@ const TopButton = styled.button`
   padding: 10px;
   font-weight: 600;
   cursor: pointer;
+  border-radius: 5px;
   border: ${(props) => props.type === "filled" && "none"};
   background-color: ${(props) =>
-    props.type === "filled" ? "black" : "transparent"};
+    props.type === "filled" ? "#18191a" : "transparent"};
   color: ${(props) => props.type === "filled" && "white"};
 `;
 
@@ -38,7 +43,6 @@ const TopTexts = styled.div`
   ${mobile({ display: "none" })}
 `;
 const TopText = styled.span`
-  text-decoration: underline;
   cursor: pointer;
   margin: 0px 10px;
 `;
@@ -47,7 +51,6 @@ const Bottom = styled.div`
   display: flex;
   justify-content: space-between;
   ${mobile({ flexDirection: "column" })}
-
 `;
 
 const Info = styled.div`
@@ -55,6 +58,10 @@ const Info = styled.div`
 `;
 
 const Product = styled.div`
+  background-color: #18191a;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
   display: flex;
   justify-content: space-between;
   ${mobile({ flexDirection: "column" })}
@@ -115,15 +122,9 @@ const ProductPrice = styled.div`
   ${mobile({ marginBottom: "20px" })}
 `;
 
-const Hr = styled.hr`
-  background-color: #eee;
-  border: none;
-  height: 1px;
-`;
-
 const Summary = styled.div`
   flex: 1;
-  border: 0.5px solid lightgray;
+  background-color: #18191a;
   border-radius: 10px;
   padding: 20px;
   height: 50vh;
@@ -157,11 +158,18 @@ const Cart = () => {
   return (
     <Container>
       <Navbar />
-      <Announcement />
       <Wrapper>
         <Title>YOUR BAG</Title>
         <Top>
-          <TopButton>CONTINUE SHOPPING</TopButton>
+          <TopButton
+            style={{
+              color: "white",
+              backgroundColor: "#18191a",
+              border: "none",
+            }}
+          >
+            CONTINUE SHOPPING
+          </TopButton>
           <TopTexts>
             <TopText>Shopping Bag(2)</TopText>
             <TopText>Your Wishlist (0)</TopText>
@@ -188,14 +196,25 @@ const Cart = () => {
               </ProductDetail>
               <PriceDetail>
                 <ProductAmountContainer>
-                  <Add />
+                  <Add
+                    style={{
+                      backgroundColor: "#242526",
+                      borderRadius: "5px",
+                      cursor: "pointer",
+                    }}
+                  />
                   <ProductAmount>2</ProductAmount>
-                  <Remove />
+                  <Remove
+                    style={{
+                      backgroundColor: "#242526",
+                      borderRadius: "5px",
+                      cursor: "pointer",
+                    }}
+                  />
                 </ProductAmountContainer>
                 <ProductPrice>$ 30</ProductPrice>
               </PriceDetail>
             </Product>
-            <Hr />
             <Product>
               <ProductDetail>
                 <Image src="https://i.pinimg.com/originals/2d/af/f8/2daff8e0823e51dd752704a47d5b795c.png" />
@@ -214,9 +233,21 @@ const Cart = () => {
               </ProductDetail>
               <PriceDetail>
                 <ProductAmountContainer>
-                  <Add />
+                  <Add
+                    style={{
+                      backgroundColor: "#242526",
+                      borderRadius: "5px",
+                      cursor: "pointer",
+                    }}
+                  />
                   <ProductAmount>1</ProductAmount>
-                  <Remove />
+                  <Remove
+                    style={{
+                      backgroundColor: "#242526",
+                      borderRadius: "5px",
+                      cursor: "pointer",
+                    }}
+                  />
                 </ProductAmountContainer>
                 <ProductPrice>$ 20</ProductPrice>
               </PriceDetail>
@@ -240,7 +271,16 @@ const Cart = () => {
               <SummaryItemText>Total</SummaryItemText>
               <SummaryItemPrice>$ 80</SummaryItemPrice>
             </SummaryItem>
-            <Button>CHECKOUT NOW</Button>
+            <Button
+              style={{
+                cursor: "pointer",
+                backgroundColor: "#242526",
+                border: "none",
+                borderRadius: "5px",
+              }}
+            >
+              CHECKOUT NOW
+            </Button>
           </Summary>
         </Bottom>
       </Wrapper>
