@@ -1,10 +1,15 @@
 import { Add, Remove } from "@material-ui/icons";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { mobile } from "../responsive";
+import StripeCheckout from "react-stripe-checkout";
+import { useState, useEffect } from "react";
+import { userRequest } from "../requestMethods";
+import { useNavigate } from "react-router-dom";
+
+const KEY = process.env.REACT_APP_STRIPE;
 
 const Container = styled.div`
   background-color: #18191a;
@@ -157,6 +162,25 @@ const Button = styled.button`
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
+  const [stripeToken, setStripeToken] = useState(null);
+  const navigate = useNavigate();
+
+  const onToken = (token) => {
+    setStripeToken(token);
+  };
+
+  useEffect(() => {
+    const makeRequest = async () => {
+      try {
+        const res = await userRequest.post("/checkout/payment", {
+          tokenId: stripeToken.id,
+          amount: 500,
+        });
+        navigate("/success", { data: res.data });
+      } catch {}
+    };
+    stripeToken && makeRequest();
+  }, [stripeToken, cart.total, navigate]);
 
   return (
     <Container>
@@ -241,16 +265,28 @@ const Cart = () => {
               <SummaryItemText>Total</SummaryItemText>
               <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
             </SummaryItem>
-            <Button
-              style={{
-                cursor: "pointer",
-                backgroundColor: "#242526",
-                border: "none",
-                borderRadius: "5px",
-              }}
+
+            <StripeCheckout
+              name="Dhwaj Shop"
+              image="https://i.guim.co.uk/img/media/b6b21223f7a169e37653d998d9541985815388b1/4_0_2559_1537/master/2559.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=5cf76ad9a55a1d0f5ce3771f5e9cf8c6"
+              billingAddress
+              shippingAddress
+              description={`Your total is $${cart.total}`}
+              amount={cart.total * 100}
+              token={onToken}
+              stripeKey={KEY}
             >
-              CHECKOUT NOW
-            </Button>
+              <Button
+                style={{
+                  cursor: "pointer",
+                  backgroundColor: "#242526",
+                  border: "none",
+                  borderRadius: "5px",
+                }}
+              >
+                CHECKOUT NOW
+              </Button>
+            </StripeCheckout>
           </Summary>
         </Bottom>
       </Wrapper>
